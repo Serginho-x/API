@@ -1,0 +1,12 @@
+
+  <div class="example-container">
+    <mat-form-field>
+        <textarea matInput placeholder="Введите комментарий" name="id" ></textarea>
+      </mat-form-field>
+  <br>
+  <button mat-raised-button color="primary" type="submit" (click)="add()">Добавить</button>
+  </div>
+
+<div class="container">
+	<div *ngFor="let c of posts">Комментарий: {{c}}</div>
+</div>

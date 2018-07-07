@@ -1,0 +1,8 @@
+.matInput {
+  color: red;
+}
+
+mat-form-field{
+  width: 80%;
+  margin: auto;
+}
