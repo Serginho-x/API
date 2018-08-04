@@ -1,12 +1,50 @@
+<section>
+  <header>
+      <div class="example-container">
+      <mat-form-field>
+          <textarea matInput placeholder="Введите комментарий" [(ngModel)]="newTodo.name" #PostName></textarea>
+        </mat-form-field>
+        <br>
+    <button mat-raised-button color="primary" type="submit" (click)="addTodo(PostName.value); PostName.value=''">Добавить</button>
+      </div>
+  </header>
 
-  <div class="example-container">
-    <mat-form-field>
-        <textarea matInput placeholder="Введите комментарий" name="id" ></textarea>
-      </mat-form-field>
-  <br>
-  <button mat-raised-button color="primary" type="submit" (click)="add()">Добавить</button>
+
+<div *ngFor="let todo of incompleteTodos">
+  <div class="container" [hidden]="submitted">
+    <span class="date">{{today |  date:'h:mm &#160;  dd.MM.yy'}}</span>
+    <span class="comment"> {{todo.title}} </span>
+     <span class="button_edit">
+          <button class="put" title="редактировать" (click)="edit(todo)">
+              <i class="material-icons">  create</i>
+          </button>
+    </span>
+    <span class="button_delete">
+          <button class="delete" title="удалить" (click)="removeTodo(todo)">
+             <i class="material-icons">clear</i>
+          </button>
+    </span>
   </div>
 
-<div class="container">
-	<div *ngFor="let c of posts">Комментарий: {{c}}</div>
+  <div class="container" [hidden]="!submitted">
+    <span class="date">{{today |  date:'h:mm &#160;  dd.MM.yy'}}</span>
+    <span class="comment"> <mat-form-field >
+
+      <textarea matInput
+                cdkTextareaAutosize
+                #autosize="cdkTextareaAutosize"
+                cdkAutosizeMinRows="2"
+                cdkAutosizeMaxRows="5"
+                [(ngModel)]="newTodo.name"
+                size='60'>
+      </textarea>
+  </mat-form-field></span>
+     <div class="button_delete">
+      <button mat-raised-button class="ok" title="ok" (click)="put(c)">
+        Ok
+      </button>
+      </div>
+  </div>
 </div>
+
+

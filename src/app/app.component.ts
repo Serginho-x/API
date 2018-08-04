@@ -1,36 +1,36 @@
-import { Component, OnInit} from '@angular/core';
-import { HttpTestService} from './http-service.component';
-import { Post } from './post.model';
+import { Todo } from './todo';
+import { Component } from '@angular/core';
+import { TodoDataService } from './todo-data.service';
 
 @Component({
   selector: 'app-root',
+  styleUrls: ['./styles.scss'],
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css'],
-
+  providers: [TodoDataService]
 })
-export class AppComponent  implements OnInit {
-  posts: Post[];
-  constructor(private _http: HttpTestService) {}
+export class AppComponent {
+  newTodo: Todo = new Todo();
+  today: number = Date.now();
+  submitted = false;
+  constructor(private todoDataService: TodoDataService) {}
 
-    ngOnInit() {
-        this.getPosts();
-    }
+  public addTodo(): void {
+    this.todoDataService.addTodo(this.newTodo);
+  }
 
-    getPosts(): void {
-      this._http.get()
-      .subscribe(post => this.posts = post);
-    }
+  public toggleTodoComplete({ id }): void {
+    this.todoDataService.toggleTodoComplete(id);
+  }
+  public removeTodo({ id }): void {
+    this.todoDataService.deleteTodoById(id);
+  }
 
-    add(name: string): void {
-      if (!name) {return; }
-      this._http.createPost({name} as Post)
-      .subscribe(post => {
-        this.posts.push(post);
-      });
-    }
+  public get incompleteTodos(): Array<Todo> {
+    return this.todoDataService.getIncompleteTodos();
+  }
 
-    delete(post: Post): void {
-      this.posts = this.posts.filter(p => p !== post);
-      this._http.deletePost(post).subscribe();
-    }
+  public get completeTodos(): Array<Todo> {
+    return this.todoDataService.getCompleteTodos();
+  }
+
 }

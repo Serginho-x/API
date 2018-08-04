@@ -1,0 +1,90 @@
+.matInput {
+  color: red;
+
+}
+
+mat-form-field{
+  min-width: 650px;
+  width: 100%;
+
+}
+
+.example-container{
+  min-width: 650px;
+  margin: 30px 120px;
+
+}
+
+.container{
+  border: 3px double black;
+  background: #fc3;
+  margin: 10px 120px;
+  overflow: hidden ;
+  min-width: 650px;
+  position: relative;
+  min-height: 58px;
+}
+
+.date {
+  color: white;
+  background-color: #607D8B;
+  margin: 10px 20px;
+  border: solid 1px black;
+  padding: 10px 20px 10px 20px;;
+  float: left;
+  position: absolute;
+  font-size: 14px;
+  font-family: Times New Roman;
+  font-weight: bold;
+}
+
+.button_edit{
+  display: inline-block;
+  position: fixed;
+  right: 65px; top: 10px;
+  border: solid 1px black;
+  position: absolute;
+}
+.button_edit:hover{
+  border: solid 2px rgb(212, 96, 28);
+}
+.button_delete{
+  display: block;
+  float: right;
+  right: 20px; top: 10px;
+  border: solid 1px black;
+  position: absolute;
+}
+.button_delete:hover{
+  border: solid 2px rgb(212, 96, 28);
+}
+
+.comment{
+  display: block;
+  color: black;
+  background-color: white;
+  margin: 10px 150px 12px 200px;
+  padding: 5px 10px;
+  word-wrap: break-word;
+  border: solid 1px black;
+  min-height: 38px;
+  box-sizing: border-box;
+}
+
+
+.fangee{
+  display: block;
+  color: black;
+  margin: 10px 150px 12px 200px;;
+  word-wrap: break-word;
+  border: solid 1px black;
+  min-height: 38px;
+  box-sizing: border-box;
+}
+
+
+mat-form-field{
+  width: 100%;
+  background: #fc3;
+  background-color: white;
+}

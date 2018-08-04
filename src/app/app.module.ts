@@ -1,18 +1,16 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+
 
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
-import { HttpTestService } from './http-service.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule} from '@angular/material/button';
 import { MatInputModule} from '@angular/material/input';
+import { StoreModule } from '@ngrx/store';
+import { todos } from './redux/reducer';
 
-const routes: Routes = [{
-  path: 'post',  component: AppComponent
-}];
 
 
 @NgModule({
@@ -23,13 +21,13 @@ const routes: Routes = [{
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
     FormsModule,
     MatButtonModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({ todos })
   ],
-  providers: [HttpTestService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
